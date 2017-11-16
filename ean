@@ -1,0 +1,33 @@
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective settings
+[WARNING] Unrecognised tag: 'mirror' (position: START_TAG seen ...he preferred \r\n   | server for that repository.\r\n   |-->\r\n<mirror>... @156:9)  @ D:\apache-maven-3.3.9\bin\..\conf\settings.xml, line 156, column 9
+[WARNING] 
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.chinaredstar:jc-crawler-web:jar:1.0.0.SNAPSHOT
+[WARNING] 'version' uses an unsupported snapshot version format, should be '*-SNAPSHOT' instead. @ com.chinaredstar:jc-crawler:1.0.0.SNAPSHOT, D:\maven-repo\com\chinaredstar\jc-crawler\1.0.0.SNAPSHOT\jc-crawler-1.0.0.SNAPSHOT.pom, line 16, column 14
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.chinaredstar:jc-crawler-biz:jar:1.0.1.SNAPSHOT
+[WARNING] 'version' uses an unsupported snapshot version format, should be '*-SNAPSHOT' instead. @ line 13, column 14
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.chinaredstar:jc-crawler-proxy:jar:1.0.0.SNAPSHOT
+[WARNING] 'version' uses an unsupported snapshot version format, should be '*-SNAPSHOT' instead. @ com.chinaredstar:jc-crawler:1.0.0.SNAPSHOT, D:\maven-repo\com\chinaredstar\jc-crawler\1.0.0.SNAPSHOT\jc-crawler-1.0.0.SNAPSHOT.pom, line 16, column 14
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.chinaredstar:jc-crawler:pom:1.0.1.SNAPSHOT
+[WARNING] 'version' uses an unsupported snapshot version format, should be '*-SNAPSHOT' instead. @ line 16, column 14
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] jc-crawler-proxy
+[INFO] jc-crawler-web
+[INFO] jc-crawler-biz
+[INFO] jc-crawler
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building jc-crawler-proxy 1.0.0.SNAPSHOT
+[INFO] ------------------------------------------------------------------------

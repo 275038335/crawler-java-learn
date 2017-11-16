@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>jc-crawler</artifactId>
+        <groupId>com.chinaredstar</groupId>
+        <version>1.0.5.1-SNAPSHOT</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.chinaredstar</groupId>
+    <artifactId>jc-crawler-web</artifactId>
+    <version>1.0.5.1-SNAPSHOT</version>
+
+
+
+    <properties>
+        <maven.deploy.skip>true</maven.deploy.skip>
+        <!--jvmSettings.agentId 简写项目名称 只能包含 [a-zA-Z0-9], '.', '-', '_' 且不超过13个长度，中间加符号"-" 占一位 预留10个长度给到脚本自动追加hostname 做全局唯一标识-->
+        <jvmSettings.agentId>jc-crawler</jvmSettings.agentId>
+        <!--jvmSettings.agentApplicationName 只能包含 [a-zA-Z0-9], '.', '-', '_'. 最大长度:24 -->
+        <jvmSettings.agentApplicationName>jc-crawler</jvmSettings.agentApplicationName>
+    </properties>
+
+    <profiles>
+
+        <!--JVM的配置注意Java内存墙问题,考虑是后台计算还是实时服务-->
+        <!-- dev -->
+        <profile>
+            <id>dev</id>
+            <properties>
+                <env>dev</env>
+                <jvmSettings.javaagent>
+                    -javaagent:/data/app/pinpoint-agent-1.6.1/pinpoint-bootstrap-1.6.1.jar
+                </jvmSettings.javaagent>
+                <jvmSettings.initialMemorySize>512</jvmSettings.initialMemorySize>
+                <jvmSettings.maxMemorySize>512</jvmSettings.maxMemorySize>
+
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <!-- uat -->
+        <profile>
+            <id>uat</id>
+            <properties>
+                <env>uat</env>
+                <!--uat 不需要采样率比例配置-->
+                <jvmSettings.javaagent>
+                    -javaagent:/data/app/pinpoint-agent-1.6.1/pinpoint-bootstrap-1.6.1.jar
+                </jvmSettings.javaagent>
+
+                <jvmSettings.initialMemorySize>512</jvmSettings.initialMemorySize>
+                <jvmSettings.maxMemorySize>512</jvmSettings.maxMemorySize>
+            </properties>
+        </profile>
+
+        <!-- uat1 -->
+        <profile>
+            <id>uat1</id>
+            <properties>
+                <env>uat1</env>
+                <!--uat 不需要采样率比例配置-->
+                <jvmSettings.javaagent>
+                    -javaagent:/data/app/pinpoint-agent-1.6.1/pinpoint-bootstrap-1.6.1.jar
+                </jvmSettings.javaagent>
+
+                <jvmSettings.initialMemorySize>512</jvmSettings.initialMemorySize>
+                <jvmSettings.maxMemorySize>512</jvmSettings.maxMemorySize>
+            </properties>
+        </profile>
+        <!-- stg -->
+        <profile>
+            <id>stg</id>
+            <properties>
+                <env>stg</env>
+                <jvmSettings.javaagent>
+                    -javaagent:/data/app/pinpoint-agent-1.6.1/100/pinpoint-bootstrap-1.6.1.jar
+                </jvmSettings.javaagent>
+                <jvmSettings.initialMemorySize>1024</jvmSettings.initialMemorySize>
+                <jvmSettings.maxMemorySize>1024</jvmSettings.maxMemorySize>
+            </properties>
+        </profile>
+        <!-- prd -->
+        <profile>
+            <id>prd</id>
+            <properties>
+                <env>prd</env>
+                <jvmSettings.javaagent>
+                    -javaagent:/data/app/pinpoint-agent-1.6.1/100/pinpoint-bootstrap-1.6.1.jar
+                </jvmSettings.javaagent>
+                <jvmSettings.initialMemorySize>1024</jvmSettings.initialMemorySize>
+                <jvmSettings.maxMemorySize>1024</jvmSettings.maxMemorySize>
+            </properties>
+        </profile>
+    </profiles>
+
+    <!--c restful依赖配置-->
+    <dependencies>
+        <!--内部业务层-->
+        <dependency>
+            <groupId>com.chinaredstar</groupId>
+            <artifactId>jc-crawler-biz</artifactId>
+        </dependency>
+        <!--代理业务层-->
+        <dependency>
+            <groupId>com.chinaredstar</groupId>
+            <artifactId>jc-crawler-proxy</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>4.2.5.RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!--commons-fileupload-->
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.jxls</groupId>
+            <artifactId>jxls-core</artifactId>
+        </dependency>
+
+        <!-- mvc -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+        </dependency>
+        <!-- spring boot -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j</artifactId>
+        </dependency>
+        <!-- sms-->
+        <dependency>
+            <groupId>com.redstar.sms</groupId>
+            <artifactId>p-sms-api</artifactId>
+            <version>1.0.7</version>
+        </dependency>
+
+        <!--<dependency>-->
+            <!--<groupId>com.chinaredstar</groupId>-->
+            <!--<artifactId>p-uc-session</artifactId>-->
+        <!--</dependency>-->
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <excludes>
+                    <exclude>env/**</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources/env/${env}</directory>
+                <targetPath>${project.build.outputDirectory}</targetPath>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <excludes>
+                        <exclude>*.xml</exclude>
+                        <exclude>*.properties</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>appassembler-maven-plugin</artifactId>
+                <version>1.10</version>
+                <configuration>
+                    <repositoryLayout>flat</repositoryLayout>
+                    <repositoryName>lib</repositoryName>
+                    <configurationDirectory>conf</configurationDirectory>
+                    <copyConfigurationDirectory>true</copyConfigurationDirectory>
+                    <configurationSourceDirectory>src/main/resources/env/${env}</configurationSourceDirectory>
+                    <includeConfigurationDirectoryInClasspath>true</includeConfigurationDirectoryInClasspath>
+                    <target>${project.build.directory}</target>
+                    <daemons>
+                        <daemon>
+                            <id>${project.name}</id>
+                            <!-- 修改包名 -->
+                            <mainClass>com.chinaredstar.Application</mainClass>
+                            <platforms>
+                                <platform>jsw</platform>
+                            </platforms>
+                            <wrapperLogFile>logs/${project.name}.log</wrapperLogFile>
+                            <generatorConfigurations>
+                                <generatorConfiguration>
+                                    <generator>jsw</generator>
+                                    <includes>
+                                        <include>macosx-universal-64</include>
+                                        <include>linux-x86-32</include>
+                                        <include>linux-x86-64</include>
+                                        <include>windows-x86-32</include>
+                                        <include>windows-x86-64</include>
+                                    </includes>
+                                    <configuration>
+                                        <property>
+                                            <name>configuration.directory.in.classpath.first</name>
+                                            <value>conf</value>
+                                        </property>
+                                        <property>
+                                            <name>set.default.REPO_DIR</name>
+                                            <value>lib</value>
+                                        </property>
+                                        <property>
+                                            <name>wrapper.ping.timeout</name>
+                                            <value>300</value>
+                                        </property>
+                                        <property>
+                                            <name>wrapper.startup.timeout</name>
+                                            <value>300</value>
+                                        </property>
+                                    </configuration>
+                                </generatorConfiguration>
+                            </generatorConfigurations>
+                            <jvmSettings>
+                                <initialMemorySize>${jvmSettings.initialMemorySize}</initialMemorySize>
+                                <maxMemorySize>${jvmSettings.maxMemorySize}</maxMemorySize>
+                                <extraArguments>
+                                    <extraArgument>-server</extraArgument>
+
+                                    <extraArgument>${jvmSettings.javaagent}</extraArgument>
+                                    <!-- 注意注意!!! jvmSettings.agentId长度不能超过13个长度 ,
+                                          并且中间加符号"-" 占一位 预留10个长度给到脚本自动追加hostname 做全局唯一标识 -->
+                                    <extraArgument>-Dpinpoint.agentId=${jvmSettings.agentId}-</extraArgument>
+                                    <!-- 注意注意!!! jvmSettings.agentApplicationName  只能包含 [a-zA-Z0-9], '.', '-', '_'. 最大长度:24-->
+                                    <extraArgument>-Dpinpoint.applicationName=${jvmSettings.agentApplicationName}</extraArgument>
+
+                                </extraArguments>
+                            </jvmSettings>
+                        </daemon>
+                    </daemons>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>generate-jsw-scripts</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>generate-daemons</goal>
+                            <goal>create-repository</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.6</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <descriptor>assembly/bin.xml</descriptor>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+</project>

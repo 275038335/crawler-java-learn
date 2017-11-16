@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>jc-crawler</artifactId>
+        <groupId>com.chinaredstar</groupId>
+        <version>1.0.5.1-SNAPSHOT</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.chinaredstar</groupId>
+    <artifactId>jc-crawler-proxy</artifactId>
+    <version>1.0.5.1-SNAPSHOT</version>
+
+    <dependencies>
+
+        <!-- 用户中心-->
+        <!--<dependency>-->
+            <!--<groupId>com.chinaredstar</groupId>-->
+            <!--<artifactId>p-uc-dubbo-core-api</artifactId>-->
+            <!--<version>1.1.38.RELEASE</version>-->
+        <!--</dependency>-->
+
+        <dependency>
+            <groupId>com.chinaredstar.review</groupId>
+            <artifactId>p-review-api</artifactId>
+            <version>1.1.3</version>
+        </dependency>
+
+        <!--<dependency>-->
+            <!--<groupId>com.chinaredstar.searchteam</groupId>-->
+            <!--<artifactId>dubbo-search-api</artifactId>-->
+            <!--<version>1.1</version>-->
+        <!--</dependency>-->
+
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpmime</artifactId>
+            <version>4.5.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.chinaredstar</groupId>
+            <artifactId>p-urms-security-api</artifactId>
+            <version>2.4.0.RELEASE</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>jackson-dataformat-xml</artifactId>
+                    <groupId>com.fasterxml.jackson.dataformat</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+    </dependencies>
+
+</project>

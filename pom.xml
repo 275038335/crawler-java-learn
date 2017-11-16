@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.chinaredstar</groupId>
+        <artifactId>jc-infras-root</artifactId>
+        <version>1.0.0.RELEASE</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+
+
+    <artifactId>jc-crawler</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.5.1-SNAPSHOT</version>
+
+    <modules>
+        <!--restful模块-->
+        <module>jc-crawler-web</module>
+
+        <!--内部业务模块-->
+        <module>jc-crawler-biz</module>
+
+        <!--代理外部dubbo模块-->
+        <module>jc-crawler-proxy</module>
+    </modules>
+
+    <!--依赖包的版本-->
+    <dependencyManagement>
+        <dependencies>
+
+            <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>2.3</version>
+            </dependency>
+
+            <dependency>
+                <groupId>xml-apis</groupId>
+                <artifactId>xml-apis</artifactId>
+                <version>1.4.01</version>
+            </dependency>
+
+            <!--web依赖biz-->
+            <dependency>
+                <groupId>com.chinaredstar</groupId>
+                <artifactId>jc-crawler-biz</artifactId>
+                <version>1.0.5.1-SNAPSHOT</version>
+                <!--<scope>provided</scope>-->
+            </dependency>
+            <!--web依赖proxy-biz-->
+            <dependency>
+                <groupId>com.chinaredstar</groupId>
+                <artifactId>jc-crawler-proxy</artifactId>
+                <version>1.0.5.1-SNAPSHOT</version>
+            </dependency>
+            <!--jc-dao-->
+            <dependency>
+                <groupId>com.chinaredstar</groupId>
+                <artifactId>jc-dao</artifactId>
+                <version>4.0.2-SNAPSHOT</version>
+            </dependency>
+
+            <!--commons-fileupload-->
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>1.3</version>
+            </dependency>
+            <dependency>
+                <groupId>com.chinaredstar</groupId>
+                <artifactId>jc-infras-file-service</artifactId>
+                <version>1.0.0.RELEASE</version>
+            </dependency>
+            <!-- session-sdk -->
+            <!--<dependency>-->
+                <!--<groupId>com.chinaredstar</groupId>-->
+                <!--<artifactId>p-uc-session</artifactId>-->
+                <!--<version>0.4.1.RELEASE</version>-->
+            <!--</dependency>-->
+            <dependency>
+                <groupId>net.sf.jxls</groupId>
+                <artifactId>jxls-core</artifactId>
+                <version>1.0.6</version>
+            </dependency>
+
+            <dependency>
+                <groupId>us.codecraft</groupId>
+                <artifactId>webmagic-core</artifactId>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-log4j12</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>us.codecraft</groupId>
+                <artifactId>webmagic-extension</artifactId>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-log4j12</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>org.seleniumhq.selenium</groupId>
+                <artifactId>selenium-java</artifactId>
+                <version>2.33.0</version>
+            </dependency>
+
+        </dependencies>
+
+    </dependencyManagement>
+
+
+
+    <!--配置c web公共配置，子模块可做相应覆盖-->
+    <dependencies>
+
+        <dependency>
+            <groupId>net.sf.json-lib</groupId>
+            <artifactId>json-lib</artifactId>
+            <version>2.4</version>
+            <classifier>jdk15</classifier>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>4.2.5.RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!--分页-->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+        </dependency>
+        <!--Utils工具包-->
+        <dependency>
+            <groupId>com.chinaredstar</groupId>
+            <artifactId>jc-infras-utils</artifactId>
+        </dependency>
+
+        <!--rsv-framework-->
+        <dependency>
+            <groupId>com.chinaredstar</groupId>
+            <artifactId>jc-infras-rsv-framework</artifactId>
+        </dependency>
+
+        <!--jc-infras-redis-->
+        <!--<dependency>-->
+            <!--<groupId>com.chinaredstar</groupId>-->
+            <!--<artifactId>jc-infras-redis</artifactId>-->
+            <!--<version>1.0.0.RELEASE</version>-->
+        <!--</dependency>-->
+
+
+
+
+    </dependencies>
+
+
+</project>
